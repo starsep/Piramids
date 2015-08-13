@@ -16,6 +16,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".GameActivity"
+            android:label="@string/title_activity_game"
+            android:parentActivityName=".MenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.starsep.piramids.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/title_activity_help"
+            android:parentActivityName=".MenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.starsep.piramids.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".AuthorsActivity"
+            android:label="@string/title_activity_authors"
+            android:parentActivityName=".MenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.starsep.piramids.MenuActivity" />
+        </activity>
+        <activity
+            android:name=".DifficultyActivity"
+            android:label="@string/title_activity_difficulty"
+            android:parentActivityName=".MenuActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.starsep.piramids.MenuActivity" />
+        </activity>
     </application>
 
 </manifest>
