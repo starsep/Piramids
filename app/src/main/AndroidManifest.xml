@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.starsep.piramids" >
+    package="com.starsep.piramids">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MenuActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".GameActivity"
             android:label="@string/title_activity_game"
-            android:parentActivityName=".MenuActivity" >
+            android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.starsep.piramids.MenuActivity" />
@@ -27,7 +26,7 @@
         <activity
             android:name=".HelpActivity"
             android:label="@string/title_activity_help"
-            android:parentActivityName=".MenuActivity" >
+            android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.starsep.piramids.MenuActivity" />
@@ -35,7 +34,7 @@
         <activity
             android:name=".AuthorsActivity"
             android:label="@string/title_activity_authors"
-            android:parentActivityName=".MenuActivity" >
+            android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.starsep.piramids.MenuActivity" />
@@ -43,7 +42,7 @@
         <activity
             android:name=".DifficultyActivity"
             android:label="@string/title_activity_difficulty"
-            android:parentActivityName=".MenuActivity" >
+            android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.starsep.piramids.MenuActivity" />
