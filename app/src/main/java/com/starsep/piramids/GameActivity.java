@@ -24,7 +24,7 @@ public class GameActivity extends AppCompatActivity {
         gameView.setGameBoard(gameBoard);
     }
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_game, menu);
@@ -44,7 +44,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
