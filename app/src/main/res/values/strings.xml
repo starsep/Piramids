@@ -23,9 +23,11 @@
     <string name="title_activity_difficulty">Choose difficulty level</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="easy">Easy</string>
-    <string name="normal">Normal</string>
-    <string name="hard">Hard</string>
-    <string name="very_hard">Very Hard</string>
-    <string name="extreme">Extreme</string>
+    <string name="level">Level</string>
+    <string name="level1">Easy</string>
+    <string name="level2">Normal</string>
+    <string name="level3">Hard</string>
+    <string name="level4">Very Hard</string>
+    <string name="level5">Extreme</string>
+    <string name="title_activity_level_choose">Choose level</string>
 </resources>

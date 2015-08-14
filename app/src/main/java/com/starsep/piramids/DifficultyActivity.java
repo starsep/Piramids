@@ -17,19 +17,14 @@ public class DifficultyActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_difficulty, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -37,8 +32,30 @@ public class DifficultyActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void startGame(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
+    public void chooseDifficulty(View view) {
+        Intent intent = new Intent(this, LevelChooseActivity.class);
+        int difficulty;
+        switch (view.getId()) {
+            case R.id.button_level1:
+                difficulty = 1;
+                break;
+            case R.id.button_level2:
+                difficulty = 2;
+                break;
+            case R.id.button_level3:
+                difficulty = 3;
+                break;
+            case R.id.button_level4:
+                difficulty = 4;
+                break;
+            case R.id.button_level5:
+                difficulty = 5;
+                break;
+            default:
+                difficulty = 0;
+                break;
+        }
+        intent.putExtra("difficulty", difficulty);
         startActivity(intent);
     }
 }

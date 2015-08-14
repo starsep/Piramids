@@ -24,27 +24,21 @@ public class GameView extends LinearLayout {
             private int y;
             public GameViewElement(Context context, int x, int y) {
                 super(context);
-                /*setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        setText("2");
-                    }
-                });*/
                 this.x = x;
                 this.y = y;
                 ((Activity)getContext()).registerForContextMenu(this);
-                //setBackgroundResource();
                 setBackgroundResource(R.drawable.game_button);
-                setHighlightColor(Color.BLUE);
                 setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
                 setOrientation(VERTICAL);
             }
 
+            //TODO: Awful hack, delete
             @Override
             public float getX() {
                 return x;
             }
 
+            //TODO: Awful hack, delete
             @Override
             public float getY() {
                 return y;
@@ -69,6 +63,8 @@ public class GameView extends LinearLayout {
 
     public GameView(Context context) {
         super(context);
+        int minSize = Math.min(getWidth(), getHeight());
+        setLayoutParams(new LinearLayout.LayoutParams(minSize, minSize, 0.0f));
     }
 
     public GameView(Context context, AttributeSet attributeSet) {
@@ -97,6 +93,5 @@ public class GameView extends LinearLayout {
             addView(row);
         }
         refresh();
-        //setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
     }
 }

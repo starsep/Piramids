@@ -2,10 +2,14 @@ package com.starsep.piramids;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
@@ -18,9 +22,18 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public static final String COLUMN_RIGHT_HINTS = "right_hints";
     public static final String COLUMN_UP_HINTS = "up_hints";
     public static final String COLUMN_DOWN_HINTS = "down_hints";
+    private static DatabaseManager instance;
 
-    public DatabaseManager(Context context) {
+    private DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static void initialize(Context context) {
+        instance = new DatabaseManager(context);
+    }
+
+    public static DatabaseManager getInstance() {
+        return instance;
     }
 
     @Override
@@ -46,7 +59,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     private String hintsToString(int[] hints) {
         String result = "";
-        for(int hint : hints) {
+        for (int hint : hints) {
             result += (char) hint;
         }
         return result;
@@ -62,5 +75,27 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_GAMES, null, values);
         db.close();
+    }
+
+    public List<GameBoard> getGames(int size) {
+        List<GameBoard> result = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_GAMES + " WHERE SIZE = " + String.valueOf(size);
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        for (; !cursor.isAfterLast(); cursor.moveToNext()) {
+            GameBoard gameBoard = new GameBoard(size);
+            gameBoard.setLeftHints(cursor.getString(cursor.getColumnIndex(COLUMN_LEFT_HINTS)));
+            gameBoard.setRightHints(cursor.getString(cursor.getColumnIndex(COLUMN_RIGHT_HINTS)));
+            gameBoard.setUpHints(cursor.getString(cursor.getColumnIndex(COLUMN_UP_HINTS)));
+            gameBoard.setDownHints(cursor.getString(cursor.getColumnIndex(COLUMN_DOWN_HINTS)));
+            result.add(gameBoard);
+        }
+        db.close();
+        return result;
+    }
+
+    public int getNumberOfGames(int size) {
+        return getGames(size).size();
     }
 }

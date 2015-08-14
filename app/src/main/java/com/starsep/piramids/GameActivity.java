@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
     private GameBoard gameBoard;
@@ -20,9 +21,12 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        gameBoard = new GameBoard(6);
-        DatabaseManager databaseManager = new DatabaseManager(this);
-        databaseManager.addGame(gameBoard);
+        int difficulty = getIntent().getIntExtra("difficulty", 0);
+        int level = getIntent().getIntExtra("number", 0);
+
+        //Toast.makeText(this, "Diff: " + String.valueOf(difficulty) + " Level: " + String.valueOf(level), Toast.LENGTH_LONG).show();
+
+        gameBoard = DatabaseManager.getInstance().getGames(difficulty + 2).get(level);
         gameView = (GameView) findViewById(R.id.gameView);
         gameView.setGameBoard(gameBoard);
     }

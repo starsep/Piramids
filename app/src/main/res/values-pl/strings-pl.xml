@@ -23,9 +23,9 @@
     </string>
     <string name="title_activity_difficulty">Wybierz poziom trudności</string>
 
-    <string name="easy">Łatwy</string>
-    <string name="normal">Normalny</string>
-    <string name="hard">Trudny</string>
-    <string name="very_hard">Bardzo trudny</string>
-    <string name="extreme">Ekstremalny</string>
+    <string name="level1">Łatwy</string>
+    <string name="level2">Normalny</string>
+    <string name="level3">Trudny</string>
+    <string name="level4">Bardzo trudny</string>
+    <string name="level5">Ekstremalny</string>
 </resources>
