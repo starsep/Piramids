@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends Activity {
     private GameBoard gameBoard;
     private GameView gameView;
     private View lastView;
@@ -33,7 +33,7 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_game, menu);
+        //getMenuInflater().inflate(R.menu.menu_game, menu);
         return true;
     }
 
@@ -57,9 +57,9 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-      //  (Button)lastView.setInteger.valueOf(item.getTitle().toString());
-        int x = (int)lastView.getX();
-        int y = (int)lastView.getY();
+        //  (Button)lastView.setInteger.valueOf(item.getTitle().toString());
+        int x = (int) lastView.getX();
+        int y = (int) lastView.getY();
         int value = Integer.valueOf(item.getTitle().toString());
         gameBoard.setTile(x, y, value);
         gameView.refresh();
