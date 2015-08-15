@@ -11,16 +11,6 @@ Version convention is that application version is database version divided by 10
 	:::java
 	float applicationVersion = DatabaseManager.DATABASE_VERSION / 100f;
 
-Versions:
-=========
-
-0.01
-----
-
--simple UI  
--generating full levels  
--simple Sqlite database  
-
 Examples:
 ---------
 
@@ -33,6 +23,16 @@ Examples:
 		applicationVersion = 1.23f;
 	if(DATABASE_VERSION == 314)
 		applicationVersion = 3.14f;
+
+Versions:
+=========
+
+0.01
+----
+
+-simple UI  
+-generating full levels  
+-simple Sqlite database  
 
 Authors
 ======
