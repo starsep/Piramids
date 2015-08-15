@@ -17,9 +17,9 @@ Versions:
 0.01
 ----
 
--simple UI
--generating full levels
--simple Sqlite database
+-simple UI  
+-generating full levels  
+-simple Sqlite database  
 
 Examples:
 ---------
