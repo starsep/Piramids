@@ -83,11 +83,12 @@ public class GameView extends LinearLayout {
 
     private GameViewRow[] rows;
     private GameBoard gameBoard;
+    private Button chosen;
 
     public void chooseButton(View view) {
-        Button button = (Button) view;
-        int x = (int) button.getX();
-        int y = (int) button.getY();
+        chosen = (Button) view;
+        int x = (int) chosen.getX();
+        int y = (int) chosen.getY();
         for (int i = 0; i < rows.length; i++) {
             for (int j = 0; j < rows[i].elements.length; j++) {
                 Button element = rows[i].elements[j];
@@ -99,8 +100,9 @@ public class GameView extends LinearLayout {
                     element.setTextColor(COLOR_ANOTHER_VALUE);
             }
         }
-        button.setBackgroundResource(R.drawable.game_chosen_button);
-        button.setTextColor(COLOR_SAME_VALUE);
+        chosen.setBackgroundResource(R.drawable.game_chosen_button);
+        chosen.setTextColor(COLOR_SAME_VALUE);
+        refresh();
     }
 
     public GameView(Context context) {
@@ -149,5 +151,14 @@ public class GameView extends LinearLayout {
         }
         addView(makeHorizontalHints(gameBoard.getDownHints()));
         refresh();
+    }
+
+    public void numberClicked(int number) {
+        if (number < 0 || number > gameBoard.getSize() || chosen == null)
+            return;
+        int x = (int) chosen.getX();
+        int y = (int) chosen.getY();
+        gameBoard.setTile(x, y, number);
+        chooseButton(chosen);
     }
 }

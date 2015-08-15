@@ -67,5 +67,35 @@ public class GameActivity extends Activity {
         gameView.chooseButton(lastView);
         return true;
     }
+
+    public void numberButtonClicked(View view) {
+        switch (view.getId()) {
+            case R.id.button0:
+                gameView.numberClicked(0);
+                break;
+            case R.id.button1:
+                gameView.numberClicked(1);
+                break;
+            case R.id.button2:
+                gameView.numberClicked(2);
+                break;
+            case R.id.button3:
+                gameView.numberClicked(3);
+                break;
+            case R.id.button4:
+                gameView.numberClicked(4);
+                break;
+            case R.id.button5:
+                gameView.numberClicked(5);
+                break;
+            case R.id.button6:
+                gameView.numberClicked(6);
+                break;
+            case R.id.button7:
+                gameView.numberClicked(7);
+                break;
+            default:
+        }
+    }
 }
 
