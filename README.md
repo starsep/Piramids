@@ -13,7 +13,8 @@ Version convention is that application version is database version divided by 10
 	:::java
 	float applicationVersion = DatabaseManager.DATABASE_VERSION / 100f;
 
-=Examples:=
+==Examples:==
+
 	:::java
 	if(DATABASE_VERSION == 1)
 		applicationVersion = 0.01f;
