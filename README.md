@@ -10,12 +10,12 @@ Version convention
 
 Version convention is that application version is database version divided by 100.
 
----java
+:::java
 float applicationVersion = DatabaseManager.DATABASE_VERSION / 100f;
---java
+:::java
 
 =Examples:=
---java
+:::java
 if(DATABASE_VERSION == 1)
 	applicationVersion = 0.01f;
 if(DATABASE_VERSION == 42)
@@ -24,7 +24,7 @@ if(DATABASE_VERSION == 123)
 	applicationVersion = 1.23f;
 if(DATABASE_VERSION == 314)
 	applicationVersion = 3.14f;
---java
+:::java
 
 -------
 Authors
