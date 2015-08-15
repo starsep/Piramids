@@ -58,14 +58,6 @@ public class LevelChooseActivity extends AppCompatActivity {
         mainLayout = (LinearLayout) findViewById(R.id.levelChooser);
         difficulty = getIntent().getIntExtra("difficulty", 0);
 
-        //DEBUG
-        try {
-            DatabaseManager.getInstance().addGame(new GameGenerator(0).generate(difficulty + 2));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //DEBUG
-
         addLevels();
     }
 
