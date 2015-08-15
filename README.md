@@ -1,19 +1,18 @@
----------------------
 Android game Piramids
----------------------
+=====================
 
 Idea came from Piramids game from http://www.wydawnictwologi.pl/
 
-------------------
 Version convention
-------------------
+==================
 
 Version convention is that application version is database version divided by 100.
 
 	:::java
 	float applicationVersion = DatabaseManager.DATABASE_VERSION / 100f;
 
-==Examples:==
+Examples:
+---------
 
 	:::java
 	if(DATABASE_VERSION == 1)
@@ -25,8 +24,7 @@ Version convention is that application version is database version divided by 10
 	if(DATABASE_VERSION == 314)
 		applicationVersion = 3.14f;
 
--------
 Authors
--------
+======
 
 Filip <starsep> Czaplicki filipczaplicki@gmail.com
