@@ -6,7 +6,7 @@ Idea came from Piramids game from http://www.wydawnictwologi.pl/
 Version convention
 ==================
 
-Version convention is that application version is database version divided by 100.
+Application version is database version divided by 100.
 
 	:::java
 	float applicationVersion = DatabaseManager.DATABASE_VERSION / 100f;
