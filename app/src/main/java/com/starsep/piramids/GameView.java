@@ -77,6 +77,10 @@ public class GameView extends LinearLayout {
         }
     }
 
+    private static final int COLOR_ERROR_VALUE = Color.RED;
+    private static final int COLOR_SAME_VALUE = Color.BLUE;
+    private static final int COLOR_ANOTHER_VALUE = Color.BLACK;
+
     private GameViewRow[] rows;
     private GameBoard gameBoard;
 
@@ -87,10 +91,16 @@ public class GameView extends LinearLayout {
         for (int i = 0; i < rows.length; i++) {
             for (int j = 0; j < rows[i].elements.length; j++) {
                 Button element = rows[i].elements[j];
-                element.setBackgroundResource(i == x || j == y ? R.drawable.game_highlighted_button : R.drawable.game_button);
+                boolean cross = i == x || j == y;
+                element.setBackgroundResource(cross ? R.drawable.game_highlighted_button : R.drawable.game_button);
+                if (gameBoard.getTile(i, j) == gameBoard.getTile(x, y))
+                    element.setTextColor(cross ? COLOR_ERROR_VALUE : COLOR_SAME_VALUE);
+                else
+                    element.setTextColor(COLOR_ANOTHER_VALUE);
             }
         }
         button.setBackgroundResource(R.drawable.game_chosen_button);
+        button.setTextColor(COLOR_SAME_VALUE);
     }
 
     public GameView(Context context) {
@@ -118,9 +128,12 @@ public class GameView extends LinearLayout {
 
     public LinearLayout makeHorizontalHints(int[] source) {
         LinearLayout result = new LinearLayout(getContext());
+        result.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
         result.setOrientation(HORIZONTAL);
+        result.addView(new HintView(0, getContext()));
         for (int hint : source)
             result.addView(new HintView(hint, getContext()));
+        result.addView(new HintView(0, getContext()));
         return result;
     }
 

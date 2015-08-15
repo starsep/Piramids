@@ -49,6 +49,7 @@ public class GameActivity extends Activity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
+        gameView.chooseButton(v);
         super.onCreateContextMenu(menu, v, menuInfo);
         for (int i = 0; i <= gameBoard.getSize(); i++)
             menu.add(String.valueOf(i));
@@ -63,6 +64,7 @@ public class GameActivity extends Activity {
         int value = Integer.valueOf(item.getTitle().toString());
         gameBoard.setTile(x, y, value);
         gameView.refresh();
+        gameView.chooseButton(lastView);
         return true;
     }
 }
