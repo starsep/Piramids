@@ -27,6 +27,11 @@ Examples:
 Versions:
 =========
 
+0.03
+----
+-actual game in database now  
+-continue game option working  
+
 0.02
 ----
 -same/another/error values coloring  
