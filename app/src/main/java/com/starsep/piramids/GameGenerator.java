@@ -62,9 +62,25 @@ public class GameGenerator {
         return gameBoard;
     }
 
+    private void removeUnnecessaryHints(GameBoard gameBoard) {
+        int side, number;
+        do {
+            side = random.nextInt(4);
+            number = random.nextInt(gameBoard.getSize());
+        } while (gameBoard.getHints()[side][number] == 0);
+        int value = gameBoard.getHints()[side][number];
+        gameBoard.getHints()[side][number] = 0;
+        if (!gameBoard.hasOnlyOneSolution()) {
+            gameBoard.getHints()[side][number] = value;
+            return;
+        }
+        removeUnnecessaryHints(gameBoard);
+    }
+
     public GameBoard generate(int size) throws Exception {
         GameBoard gameBoard = generateFullGameBoard(size);
         gameBoard.generateHints();
+        removeUnnecessaryHints(gameBoard);
         //Log.d("gameGenerator: ", gameBoard.debug());
         return gameBoard;
     }

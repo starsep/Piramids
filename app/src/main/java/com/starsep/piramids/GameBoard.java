@@ -8,17 +8,27 @@ public class GameBoard {
     public static final int MIN_SIZE = 3;
     public static final int MAX_SIZE = 7;
     private final int[][] tiles;
-    private final int[] leftHints;
-    private final int[] rightHints;
-    private final int[] upHints;
-    private final int[] downHints;
+    public static final int LEFT = 0;
+    public static final int RIGHT = 1;
+    public static final int UP = 2;
+    public static final int DOWN = 3;
+    private final int[][] hints;
     private final int size;
     private int chosenX;
     private int chosenY;
     private int[][] errorCounter;
 
+    public int[][] getHints() {
+        return hints;
+    }
+
+    public void setHints(int side, int number, int value) {
+        hints[side][number] = value;
+    }
+
     public int getErrorCounter(int x, int y) {
         return errorCounter[x][y];
+
     }
 
     public int[][] getErrorCounters() {
@@ -43,16 +53,14 @@ public class GameBoard {
         for (int i = 0; i < size; i++) {
             errorCounter[i] = new int[size];
         }
-        leftHints = new int[size];
-        rightHints = new int[size];
-        upHints = new int[size];
-        downHints = new int[size];
+        hints = new int[4][];
+        for (int i = 0; i < hints.length; i++)
+            hints[i] = new int[size];
     }
 
     public int[] getRow(int number) {
         int[] row = new int[size];
-        for (int i = 0; i < size; i++)
-            row[i] = tiles[number][i];
+        System.arraycopy(tiles[number], 0, row, 0, size);
         return row;
     }
 
@@ -86,16 +94,16 @@ public class GameBoard {
     private void generateRowHints() {
         for (int i = 0; i < size; i++) {
             int[] row = getRow(i);
-            leftHints[i] = generateLeftHint(row);
-            rightHints[i] = generateRightHint(row);
+            hints[LEFT][i] = generateLeftHint(row);
+            hints[RIGHT][i] = generateRightHint(row);
         }
     }
 
     private void generateColumnHints() {
         for (int i = 0; i < size; i++) {
             int[] column = getColumn(i);
-            upHints[i] = generateLeftHint(column);
-            downHints[i] = generateRightHint(column);
+            hints[UP][i] = generateLeftHint(column);
+            hints[DOWN][i] = generateRightHint(column);
         }
     }
 
@@ -119,14 +127,14 @@ public class GameBoard {
     private boolean isRowValid(int number, boolean checkHints) {
         int[] row = getRow(number);
         if (checkHints)
-            return isLineValid(row, leftHints[number], rightHints[number]);
+            return isLineValid(row, hints[LEFT][number], hints[RIGHT][number]);
         return isLineValid(row, 0, 0);
     }
 
     private boolean isColumnValid(int number, boolean checkHints) {
         int[] column = getColumn(number);
         if (checkHints)
-            return isLineValid(column, upHints[number], downHints[number]);
+            return isLineValid(column, hints[UP][number], hints[DOWN][number]);
         return isLineValid(column, 0, 0);
     }
 
@@ -161,19 +169,19 @@ public class GameBoard {
     }
 
     public int[] getLeftHints() {
-        return leftHints;
+        return hints[LEFT];
     }
 
     public int[] getRightHints() {
-        return rightHints;
+        return hints[RIGHT];
     }
 
     public int[] getUpHints() {
-        return upHints;
+        return hints[UP];
     }
 
     public int[] getDownHints() {
-        return downHints;
+        return hints[DOWN];
     }
 
     public void setTile(int x, int y, int value) {
@@ -188,27 +196,27 @@ public class GameBoard {
         return result;
     }
 
-    public void setLeftHints(int[] hints) {
-        for (int i = 0; i < hints.length; i++)
-            leftHints[i] = hints[i];
+    private void setHintsSide(int side, int[] newHints) {
+        System.arraycopy(newHints, 0, hints[side], 0, newHints.length);
+    }
+    public void setLeftHints(int[] newHints) {
+        setHintsSide(LEFT, newHints);
     }
 
     public void setLeftHints(String string) {
         setLeftHints(stringToHints(string));
     }
 
-    public void setRightHints(int[] hints) {
-        for (int i = 0; i < hints.length; i++)
-            rightHints[i] = hints[i];
+    public void setRightHints(int[] newHints) {
+        setHintsSide(RIGHT, newHints);
     }
 
     public void setRightHints(String string) {
         setRightHints(stringToHints(string));
     }
 
-    public void setUpHints(int[] hints) {
-        for (int i = 0; i < hints.length; i++)
-            upHints[i] = hints[i];
+    public void setUpHints(int[] newHints) {
+        setHintsSide(UP, newHints);
     }
 
     public void setUpHints(String string) {
@@ -216,9 +224,8 @@ public class GameBoard {
     }
 
 
-    public void setDownHints(int[] hints) {
-        for (int i = 0; i < hints.length; i++)
-            downHints[i] = hints[i];
+    public void setDownHints(int[] newHints) {
+        setHintsSide(DOWN, newHints);
     }
 
     public void setDownHints(String string) {
@@ -234,25 +241,30 @@ public class GameBoard {
     }
 
     private String debugLine(int number) {
-        String result = String.valueOf(leftHints[number]) + " ";
+        String result = String.valueOf(hints[LEFT][number]) + " ";
         for (int i = 0; i < size; i++)
             result += String.valueOf(tiles[number][i]) + " ";
-        result += String.valueOf(rightHints[number]) + "\n";
+        result += String.valueOf(hints[RIGHT][number]) + "\n";
         return result;
     }
 
     public String debug() {
         String result = "Generated: \n";
-        result += debugVerticalHints(upHints);
+        result += debugVerticalHints(hints[UP]);
         for (int i = 0; i < size; i++)
             result += debugLine(i);
-        result += debugVerticalHints(downHints);
+        result += debugVerticalHints(hints[DOWN]);
         return result;
     }
 
     public void setChosen(int x, int y) {
         chosenX = x;
         chosenY = y;
+    }
+
+    public boolean hasOnlyOneSolution() {
+        //TODO
+        return false;
     }
 
 }
