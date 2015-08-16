@@ -1,15 +1,13 @@
 package com.starsep.piramids;
 
 import android.app.Activity;
-import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+
+import com.starsep.piramids.view.GameView;
 
 public class GameActivity extends Activity {
     private GameBoard gameBoard;
@@ -58,13 +56,9 @@ public class GameActivity extends Activity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        //  (Button)lastView.setInteger.valueOf(item.getTitle().toString());
-        int x = (int) lastView.getX();
-        int y = (int) lastView.getY();
         int value = Integer.valueOf(item.getTitle().toString());
-        gameBoard.setTile(x, y, value);
-        gameView.refresh();
         gameView.chooseButton(lastView);
+        gameView.changeChosen(value);
         return true;
     }
 

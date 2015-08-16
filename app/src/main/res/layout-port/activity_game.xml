@@ -7,7 +7,7 @@
     tools:context="com.starsep.piramids.GameActivity"
     android:orientation="vertical">
 
-    <com.starsep.piramids.GameView
+    <com.starsep.piramids.view.GameView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/gameView"

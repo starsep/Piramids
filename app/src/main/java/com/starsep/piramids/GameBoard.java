@@ -83,7 +83,10 @@ public class GameBoard {
 
     private boolean isLineValid(int[] values, int leftHint, int rightHint) {
         Arrays.sort(values);
-        //TODO: leftHint != 0 || rightHint != 0
+        if(leftHint != 0 && generateLeftHint(values) != leftHint)
+            return false;
+        if(rightHint != 0 && generateRightHint(values) != rightHint)
+            return false;
         for (int i = 1; i < values.length; i++)
             if (values[i] != 0 && values[i - 1] == values[i])
                 return false;
@@ -92,13 +95,15 @@ public class GameBoard {
 
     private boolean isRowValid(int number, boolean checkHints) {
         int[] row = getRow(number);
-        //TODO: checkHints == true
+        if(checkHints)
+            return isLineValid(row, leftHints[number], rightHints[number]);
         return isLineValid(row, 0, 0);
     }
 
     private boolean isColumnValid(int number, boolean checkHints) {
         int[] column = getColumn(number);
-        //TODO: checkHints == true
+        if(checkHints)
+            return isLineValid(column, upHints[number], downHints[number]);
         return isLineValid(column, 0, 0);
     }
 
