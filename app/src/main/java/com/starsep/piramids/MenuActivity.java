@@ -13,7 +13,15 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        DatabaseManager.initialize(this);
+        if(DatabaseManager.getInstance(this).getActualGame() != null)
+            findViewById(R.id.button_continue).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(DatabaseManager.getInstance(this).getActualGame() != null)
+            findViewById(R.id.button_continue).setVisibility(View.VISIBLE);
     }
 
     @Override

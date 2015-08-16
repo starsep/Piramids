@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.starsep.piramids.DatabaseManager;
 import com.starsep.piramids.GameBoard;
 import com.starsep.piramids.R;
 
@@ -20,7 +21,10 @@ public class GameView extends LinearLayout {
     private GameViewRow[] rows;
     private GameBoard gameBoard;
     private Button chosen;
-    private int[][] errorCounter;
+
+    public GameViewRow[] getRows() {
+        return rows;
+    }
 
     private void colorCross(int x, int y) {
         for (int i = 0; i < rows.length; i++) {
@@ -51,6 +55,7 @@ public class GameView extends LinearLayout {
     }
 
     private void colorErrors(int x, int y) {
+        int[][] errorCounter = gameBoard.getErrorCounters();
         for (int i = 0; i < rows.length; i++)
             rows[x].elements[i].setTextColor(errorCounter[x][i] > 0 ? COLOR_ERROR_VALUE : COLOR_ANOTHER_VALUE);
         for (int i = 0; i < rows.length; i++)
@@ -62,14 +67,18 @@ public class GameView extends LinearLayout {
         chosen = (Button) view;
         int x = (int) chosen.getX();
         int y = (int) chosen.getY();
+        gameBoard.setChosen(x, y);
         colorCross(x, y);
         colorSameValues(x, y);
         colorChosen();
+        colorErrors(x, y);
         refresh();
+        DatabaseManager.getInstance(getContext()).setActualGame(gameBoard);
     }
 
     private void updateErrorCounters(int x, int y, int oldValue, int value) {
         int[][] tiles = gameBoard.getTiles();
+        int[][] errorCounter = gameBoard.getErrorCounters();
         //delete old errors
         if (oldValue != 0)
             for (int i = 0; i < tiles.length; i++) {
@@ -101,8 +110,8 @@ public class GameView extends LinearLayout {
     }
 
     public void changeChosen(int value) {
-        int x = (int) chosen.getX();
-        int y = (int) chosen.getY();
+        int x = gameBoard.getChosenX();
+        int y = gameBoard.getChosenY();
         int oldValue = gameBoard.getTile(x, y);
         if (oldValue == value)
             return;
@@ -111,6 +120,7 @@ public class GameView extends LinearLayout {
         updateErrorCounters(x, y, oldValue, value);
         colorErrors(x, y);
         chooseButton(chosen);
+        DatabaseManager.getInstance(getContext()).setActualGame(gameBoard);
     }
 
     public GameView(Context context) {
@@ -146,9 +156,6 @@ public class GameView extends LinearLayout {
 
     public void setGameBoard(GameBoard gameBoard) {
         setOrientation(VERTICAL);
-        errorCounter = new int[gameBoard.getSize()][];
-        for (int i = 0; i < gameBoard.getSize(); i++)
-            errorCounter[i] = new int[gameBoard.getSize()];
         this.gameBoard = gameBoard;
         rows = new GameViewRow[gameBoard.getSize()];
         for (int i = 0; i < rows.length; i++) {

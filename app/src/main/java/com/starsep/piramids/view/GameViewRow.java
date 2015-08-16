@@ -24,4 +24,8 @@ public class GameViewRow extends LinearLayout {
         setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
         setOrientation(HORIZONTAL);
     }
+
+    public GameViewElement[] getElements() {
+        return elements;
+    }
 }

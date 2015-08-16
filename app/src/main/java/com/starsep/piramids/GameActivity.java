@@ -2,6 +2,7 @@ package com.starsep.piramids;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,14 +20,14 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        int difficulty = getIntent().getIntExtra("difficulty", 0);
-        int level = getIntent().getIntExtra("number", 0);
-
         //Toast.makeText(this, "Diff: " + String.valueOf(difficulty) + " Level: " + String.valueOf(level), Toast.LENGTH_LONG).show();
 
-        gameBoard = DatabaseManager.getInstance().getGames(difficulty + 2).get(level);
+        gameBoard = DatabaseManager.getInstance(this).getActualGame();
         gameView = (GameView) findViewById(R.id.gameView);
         gameView.setGameBoard(gameBoard);
+        int x = gameBoard.getChosenX();
+        int y = gameBoard.getChosenY();
+        gameView.chooseButton(gameView.getRows()[x].getElements()[y]);
     }
 
     @Override

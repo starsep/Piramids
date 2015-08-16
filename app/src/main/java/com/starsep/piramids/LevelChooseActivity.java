@@ -32,8 +32,8 @@ public class LevelChooseActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), GameActivity.class);
-                    intent.putExtra("difficulty", difficulty);
-                    intent.putExtra("number", getNumber());
+                    GameBoard gameBoard = DatabaseManager.getInstance(getContext()).getGames(difficulty + 2).get(getNumber());
+                    DatabaseManager.getInstance(getContext()).setActualGame(gameBoard);
                     startActivity(intent);
                 }
             });
@@ -41,10 +41,7 @@ public class LevelChooseActivity extends AppCompatActivity {
     }
 
     private void addLevels() {
-        //for(int i = 3; i<=7;i++)
-        //    for(int j=0;j<i;j++)
-        //        DatabaseManager.getInstance().addGame(new GameBoard(i));
-        int numberOfLevels = DatabaseManager.getInstance().getNumberOfGames(difficulty + 2);
+        int numberOfLevels = DatabaseManager.getInstance(this).getNumberOfGames(difficulty + 2);
         for (int i = 0; i < numberOfLevels; i++) {
             mainLayout.addView(new LevelItem(i, this));
         }

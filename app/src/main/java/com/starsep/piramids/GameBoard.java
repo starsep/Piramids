@@ -13,12 +13,35 @@ public class GameBoard {
     private final int[] upHints;
     private final int[] downHints;
     private final int size;
+    private int chosenX;
+    private int chosenY;
+    private int[][] errorCounter;
+
+    public int getErrorCounter(int x, int y) {
+        return errorCounter[x][y];
+    }
+
+    public int[][] getErrorCounters() {
+        return errorCounter;
+    }
+
+    public void setErrorCounter(int x, int y, int value) {
+        this.errorCounter[x][y] = value;
+    }
+
+    public void setErrorCounter(int[][] errorCounter) {
+        this.errorCounter = errorCounter;
+    }
 
     public GameBoard(int size) {
         this.size = size;
         tiles = new int[size][];
         for (int i = 0; i < size; i++) {
             tiles[i] = new int[size];
+        }
+        errorCounter = new int[size][];
+        for (int i = 0; i < size; i++) {
+            errorCounter[i] = new int[size];
         }
         leftHints = new int[size];
         rightHints = new int[size];
@@ -121,6 +144,14 @@ public class GameBoard {
         return size;
     }
 
+    public int getChosenX() {
+        return chosenX;
+    }
+
+    public int getChosenY() {
+        return chosenY;
+    }
+
     public int getTile(int x, int y) {
         return tiles[x][y];
     }
@@ -184,6 +215,7 @@ public class GameBoard {
         setUpHints(stringToHints(string));
     }
 
+
     public void setDownHints(int[] hints) {
         for (int i = 0; i < hints.length; i++)
             downHints[i] = hints[i];
@@ -193,10 +225,10 @@ public class GameBoard {
         setDownHints(stringToHints(string));
     }
 
-    private String debugVerticalHints(int[] source) {
+    private String debugVerticalHints(final int[] source) {
         String result = "-";
         for (int i = 0; i < size; i++)
-            result += " " + source[i];
+            result += " " + (char) source[i];
         result += " -\n";
         return result;
     }
@@ -217,4 +249,10 @@ public class GameBoard {
         result += debugVerticalHints(downHints);
         return result;
     }
+
+    public void setChosen(int x, int y) {
+        chosenX = x;
+        chosenY = y;
+    }
+
 }
