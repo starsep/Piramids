@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.starsep.piramids.R;
+
 
 public class HintView extends TextView {
     public HintView(Context context) {
@@ -16,7 +18,7 @@ public class HintView extends TextView {
     public HintView(int value, Context context) {
         super(context);
         setText(value == 0 ? "" : String.valueOf(value));
-        setTextSize(getTextSize());
+        setTextSize(Dip.get(getContext(), R.dimen.activity_game_text_size));
         setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
     }
 }
