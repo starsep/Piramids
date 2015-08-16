@@ -45,7 +45,7 @@ public class LevelChooseActivity extends AppCompatActivity {
         //    for(int j=0;j<i;j++)
         //        DatabaseManager.getInstance().addGame(new GameBoard(i));
         int numberOfLevels = DatabaseManager.getInstance().getNumberOfGames(difficulty + 2);
-        for(int i = 0; i < numberOfLevels; i++) {
+        for (int i = 0; i < numberOfLevels; i++) {
             mainLayout.addView(new LevelItem(i, this));
         }
     }

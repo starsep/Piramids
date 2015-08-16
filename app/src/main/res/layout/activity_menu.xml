@@ -1,57 +1,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MenuActivity">
+    tools:context=".MenuActivity">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout">
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
 
         <Button
+            android:id="@+id/button_continue"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/continue_game"
-            android:id="@+id/button_continue"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             android:onClick="continueGame"
+            android:text="@string/continue_game"
             android:visibility="gone" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/new_game"
             android:id="@+id/button_new"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
             android:onClick="startGame"
-            android:layout_weight="1" />
+            android:text="@string/new_game" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/help"
             android:id="@+id/button_help"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/linearLayout"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1"
-            android:onClick="showHelp" />
-
-        <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/authors"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:onClick="showHelp"
+            android:text="@string/help" />
+
+        <Button
             android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_below="@+id/linearLayout"
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
-            android:onClick="showAuthors" />
+            android:onClick="showAuthors"
+            android:text="@string/authors" />
 
     </LinearLayout>
 
