@@ -27,6 +27,11 @@ Examples:
 Versions:
 =========
 
+0.02
+----
+-same/another/error values coloring  
+-number buttons works  
+
 0.01
 ----
 
