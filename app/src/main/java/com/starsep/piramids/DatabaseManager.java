@@ -194,7 +194,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         result.setLeftHints(cursor.getString(cursor.getColumnIndex(COLUMN_LEFT_HINTS)));
         result.setRightHints(cursor.getString(cursor.getColumnIndex(COLUMN_RIGHT_HINTS)));
         result.setUpHints(cursor.getString(cursor.getColumnIndex(COLUMN_UP_HINTS)));
-        result.setDownHints(cursor.getString(cursor.getColumnIndex(COLUMN_RIGHT_HINTS)));
+        result.setDownHints(cursor.getString(cursor.getColumnIndex(COLUMN_DOWN_HINTS)));
         int chosenX = cursor.getInt(cursor.getColumnIndex(COLUMN_CHOSENX));
         int chosenY = cursor.getInt(cursor.getColumnIndex(COLUMN_CHOSENY));
         result.setChosen(chosenX, chosenY);
