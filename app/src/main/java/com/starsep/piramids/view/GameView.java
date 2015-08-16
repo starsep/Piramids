@@ -88,12 +88,12 @@ public class GameView extends LinearLayout {
             }
         //update chosen error counter
         errorCounter[x][y] = 0;
-        if(value == 0)
+        if (value == 0)
             return;
         for (int i = 0; i < tiles.length; i++) {
-            if(tiles[x][i] == value) //same row, same value => new error
+            if (tiles[x][i] == value) //same row, same value => new error
                 errorCounter[x][y]++;
-            if(tiles[i][y] == value) //same column, same value => new error
+            if (tiles[i][y] == value) //same column, same value => new error
                 errorCounter[x][y]++;
         }
         //we added two unnecessary errors (because chosen has same column and row as itself)
@@ -137,10 +137,10 @@ public class GameView extends LinearLayout {
         LinearLayout result = new LinearLayout(getContext());
         result.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
         result.setOrientation(HORIZONTAL);
-        result.addView(new HintView(0, getContext()));
+        result.addView(new HintView(getContext()));
         for (int hint : source)
             result.addView(new HintView(hint, getContext()));
-        result.addView(new HintView(0, getContext()));
+        result.addView(new HintView(getContext()));
         return result;
     }
 

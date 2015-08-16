@@ -18,6 +18,7 @@ public class GameViewElement extends Button {
         this.x = x;
         this.y = y;
         ((Activity) getContext()).registerForContextMenu(this);
+        setTextSize(getTextSize());
         setBackgroundResource(R.drawable.game_button);
         setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
         setOnClickListener(new OnClickListener() {
