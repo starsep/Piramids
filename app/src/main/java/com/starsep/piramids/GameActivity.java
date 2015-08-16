@@ -2,7 +2,6 @@ package com.starsep.piramids;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;

@@ -1,7 +1,5 @@
 package com.starsep.piramids;
 
-import android.util.Log;
-
 import java.util.Arrays;
 import java.util.Random;
 

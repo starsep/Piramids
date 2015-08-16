@@ -1,8 +1,6 @@
 package com.starsep.piramids;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 
 public class GameBoard {
     public static final int MIN_SIZE = 3;
@@ -22,14 +20,14 @@ public class GameBoard {
         return hints;
     }
 
-    public void setHints(int side, int number, int value) {
+    /*public void setHints(int side, int number, int value) {
         hints[side][number] = value;
     }
 
     public int getErrorCounter(int x, int y) {
         return errorCounter[x][y];
 
-    }
+    }*/
 
     public int[][] getErrorCounters() {
         return errorCounter;
@@ -39,9 +37,9 @@ public class GameBoard {
         this.errorCounter[x][y] = value;
     }
 
-    public void setErrorCounter(int[][] errorCounter) {
+    /*public void setErrorCounter(int[][] errorCounter) {
         this.errorCounter = errorCounter;
-    }
+    }*/
 
     public GameBoard(int size) {
         this.size = size;
@@ -199,6 +197,7 @@ public class GameBoard {
     private void setHintsSide(int side, int[] newHints) {
         System.arraycopy(newHints, 0, hints[side], 0, newHints.length);
     }
+
     public void setLeftHints(int[] newHints) {
         setHintsSide(LEFT, newHints);
     }
@@ -232,7 +231,7 @@ public class GameBoard {
         setDownHints(stringToHints(string));
     }
 
-    private String debugVerticalHints(final int[] source) {
+    /*private String debugVerticalHints(final int[] source) {
         String result = "-";
         for (int i = 0; i < size; i++)
             result += " " + (char) source[i];
@@ -255,7 +254,7 @@ public class GameBoard {
             result += debugLine(i);
         result += debugVerticalHints(hints[DOWN]);
         return result;
-    }
+    }*/
 
     public void setChosen(int x, int y) {
         chosenX = x;
