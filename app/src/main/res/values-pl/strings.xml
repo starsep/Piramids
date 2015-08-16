@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Piramidy</string>
+
+    <string name="action_settings">Ustawienia</string>
+    <string name="title_activity_game">Gra</string>
+    <string name="new_game">Nowa gra</string>
+    <string name="continue_game">Kontynuuj grę</string>
+    <string name="help">Pomoc</string>
+    <string name="title_activity_help">Pomoc</string>
+    <string name="authors">Autorzy</string>
+    <string name="help_content">
+        <![CDATA[
+            Powo!
+        ]]>
+    </string>
+    <string name="title_activity_authors">Autorzy</string>
+    <string name="authors_content">
+        <![CDATA[
+            Filip <starsep> Czaplicki
+            filipczaplicki@gmail.com
+        ]]>
+    </string>
+    <string name="title_activity_difficulty">Wybierz poziom trudności</string>
+
+    <string name="level1">Łatwy</string>
+    <string name="level2">Normalny</string>
+    <string name="level3">Trudny</string>
+    <string name="level4">Bardzo trudny</string>
+    <string name="level5">Ekstremalny</string>
     <string name="hello_world">Witaj świecie!</string>
     <string name="level">Poziom</string>
     <string name="title_activity_level_choose">Wybierz poziom</string>
