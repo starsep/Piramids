@@ -6,6 +6,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.starsep.piramids.view.GameView;
 
@@ -27,6 +28,8 @@ public class GameActivity extends Activity {
         int x = gameBoard.getChosenX();
         int y = gameBoard.getChosenY();
         gameView.chooseButton(gameView.getRows()[x].getElements()[y]);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
