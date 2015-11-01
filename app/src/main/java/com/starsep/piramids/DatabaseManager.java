@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 4;
     public static final String DATABASE_NAME = "Piramids.db";
     public static final String TABLE_ACTUAL_GAMES = "actual_games";
     public static final String TABLE_GAMES = "games";
