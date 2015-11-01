@@ -8,21 +8,23 @@ Version convention
 
 Application version is database version divided by 100.
 
-	:::java
-	float applicationVersion = DatabaseManager.DATABASE_VERSION / 100f;
+```java
+float applicationVersion = DatabaseManager.DATABASE_VERSION / 100f;
+```
 
 Examples:
 ---------
 
-	:::java
-	if(DATABASE_VERSION == 1)
-		applicationVersion = 0.01f;
-	if(DATABASE_VERSION == 42)
-		applicationVersion = 0.42f;
-	if(DATABASE_VERSION == 123)
-		applicationVersion = 1.23f;
-	if(DATABASE_VERSION == 314)
-		applicationVersion = 3.14f;
+```java
+if(DATABASE_VERSION == 1)
+	applicationVersion = 0.01f;
+if(DATABASE_VERSION == 42)
+	applicationVersion = 0.42f;
+if(DATABASE_VERSION == 123)
+	applicationVersion = 1.23f;
+if(DATABASE_VERSION == 314)
+	applicationVersion = 3.14f;
+```
 
 Versions:
 =========
