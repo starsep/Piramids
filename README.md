@@ -29,6 +29,10 @@ if(DATABASE_VERSION == 314)
 Versions:
 =========
 
+0.04
+----
+-some stuff needed to publish app @ Google Play
+
 0.03
 ----
 -actual game in database now  
