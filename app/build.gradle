@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.starsep.piramids"
-        minSdkVersion 16
+        minSdkVersion 9
         targetSdkVersion 23
         versionCode 4
         versionName "0.04"
